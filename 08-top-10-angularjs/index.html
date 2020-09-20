@@ -1,44 +1,53 @@
 <!doctype html>
 <html>
-  <head>
-      <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        10
+
+<head>
+  <meta charset="UTF-8">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+</head>
+
+<body ng-app="Top10App">
+  <script type="text/ng-template" id="js/directives/tvShow.html">
+      <div class="img_container">
+        <img class="img-responsive" ng-src="{{ info.series_img }}">
       </div>
+      <h2 class="series"> {{ info.series }}</h2>
+      <p class="genre"> {{ info.genre }}</p>
+      <p class="run-start"> {{ info.run_start }}</p>
+      <p class="description"> {{ info.description }}</p>
+    </script>
+  <div class="header">
+    <div class="container">
+      10
     </div>
+  </div>
 
-    <div class="main">
-      <div class="container">
-        <div class="content">
-
-          <!--
-          TODO: Loop through shows and display each one with this HTML
-          <div>
-            <div class="rank">{{$index + 1}}</div>
-            
-            </div>
-          -->
-
+  <div class="main" ng-controller="MainController">
+    <div class="container">
+      <div class="content">
+        <div ng-repeat="show in shows">
+          <div class="rank">{{$index + 1}}</div>
+          <tv-show info="show"></tv-show>
         </div>
+
       </div>
     </div>
+  </div>
 
-    <!-- Modules -->
-    <script src="js/app.js"></script>
+  <!-- Modules -->
+  <script src="js/app.js"></script>
 
-    <!-- Controllers -->
-    <script src="js/controllers/MainController.js"></script>
+  <!-- Controllers -->
+  <script src="js/controllers/MainController.js"></script>
 
-    <!-- Directives -->
-    
+  <!-- Directives -->
+  <script src="js/directives/tvShow.js"></script>
 
-    <!-- Services -->
-    
-  </body>
+  <!-- Services -->
+  <script src="js/services/shows.js"></script>
+</body>
+
 </html>
